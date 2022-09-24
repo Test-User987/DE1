@@ -210,7 +210,7 @@ print("Hello Python!")
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC -- SELECT * FROM demo_tmp_vw
+# MAGIC SELECT * FROM demo_tmp_vw
 
 # COMMAND ----------
 
@@ -222,6 +222,13 @@ print("Hello Python!")
 # COMMAND ----------
 
 # MAGIC %run ../Includes/Classroom-Setup-01.2
+
+# COMMAND ----------
+
+# MAGIC 
+# MAGIC 
+# MAGIC 
+# MAGIC %fs ls mnt
 
 # COMMAND ----------
 
@@ -272,6 +279,10 @@ print(f"DA.db_name:           {DA.db_name}")
 
 # COMMAND ----------
 
+# MAGIC %fs ls "/mnt/dbacademy-users/khattiarjun.sap@outlook.com/data-engineering-with-databricks"
+
+# COMMAND ----------
+
 # MAGIC %sql
 # MAGIC SELECT '${da.username}' AS current_username,
 # MAGIC        '${da.paths.working_dir}' AS working_directory,
@@ -286,6 +297,27 @@ print(f"DA.db_name:           {DA.db_name}")
 # MAGIC Databricks notebooks provide a number of utility commands for configuring and interacting with the environment: <a href="https://docs.databricks.com/user-guide/dev-tools/dbutils.html" target="_blank">dbutils docs</a>
 # MAGIC 
 # MAGIC Throughout this course, we'll occasionally use **`dbutils.fs.ls()`** to list out directories of files from Python cells.
+
+# COMMAND ----------
+
+path = f"{DA.paths.datasets}"
+
+# COMMAND ----------
+
+path
+
+
+# COMMAND ----------
+
+# MAGIC %fs ls dbfs:/mnt/dbacademy-datasets/data-engineering-with-databricks/v02
+
+# COMMAND ----------
+
+# MAGIC %fs ls dbfs:/mnt/dbacademy-datasets/data-engineering-with-databricks/v02/ecommerce/raw/sales-csv/
+
+# COMMAND ----------
+
+# MAGIC %fs head dbfs:/mnt/dbacademy-datasets/data-engineering-with-databricks/v02/ecommerce/raw/sales-csv/000.csv
 
 # COMMAND ----------
 
