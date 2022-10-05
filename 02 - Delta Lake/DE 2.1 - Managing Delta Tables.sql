@@ -78,6 +78,10 @@ CREATE TABLE IF NOT EXISTS students
 
 -- COMMAND ----------
 
+
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="408b1c71-b26b-43c0-b144-d5e92064a5ac"/>
 -- MAGIC 
 -- MAGIC 
@@ -86,6 +90,10 @@ CREATE TABLE IF NOT EXISTS students
 -- MAGIC Most often, data will be inserted to tables as the result of a query from another source.
 -- MAGIC 
 -- MAGIC However, just as in standard SQL, you can also insert values directly, as shown here.
+
+-- COMMAND ----------
+
+
 
 -- COMMAND ----------
 
@@ -156,7 +164,7 @@ SELECT * FROM students
 -- COMMAND ----------
 
 UPDATE students 
-SET value = value + 1
+SET value = value + 10
 WHERE name LIKE "T%"
 
 -- COMMAND ----------
@@ -205,7 +213,7 @@ WHERE value > 6
 -- COMMAND ----------
 
 CREATE OR REPLACE TEMP VIEW updates(id, name, value, type) AS VALUES
-  (2, "Omar", 15.2, "update"),
+  (2, "aj", 15.2, "update"),
   (3, "", null, "delete"),
   (7, "Blue", 7.7, "insert"),
   (11, "Diya", 8.8, "update");
@@ -237,6 +245,10 @@ WHEN MATCHED AND u.type = "delete"
   THEN DELETE
 WHEN NOT MATCHED AND u.type = "insert"
   THEN INSERT *
+
+-- COMMAND ----------
+
+-- MAGIC %sql select * from students
 
 -- COMMAND ----------
 

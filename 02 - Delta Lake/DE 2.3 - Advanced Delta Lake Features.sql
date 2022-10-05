@@ -107,6 +107,10 @@ DESCRIBE EXTENDED students
 
 -- COMMAND ----------
 
+-- MAGIC %fs ls dbfs:/mnt/dbacademy-users/khattiarjun.sap@outlook.com/data-engineering-with-databricks/
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="5495f382-2841-4cf5-b872-db4dd3828ee5"/>
 -- MAGIC 
 -- MAGIC 
@@ -161,6 +165,21 @@ DESCRIBE DETAIL students
 
 -- COMMAND ----------
 
+-- MAGIC %fs head dbfs:/mnt/dbacademy-users/khattiarjun.sap@outlook.com/data-engineering-with-databricks/database.db/students/_delta_log/00000000000000000007.json
+
+-- COMMAND ----------
+
+df1=spark.read.json(dbfs:/mnt/dbacademy-users/khattiarjun.sap@outlook.com/data-engineering-with-databricks/database.db/students/_delta_log/00000000000000000007.json)
+
+-- COMMAND ----------
+
+
+multiline_df = spark.read.option("multiline","true").json("dbfs:/mnt/dbacademy-users/khattiarjun.sap@outlook.com/data-engineering-with-databricks/database.db/students/_delta_log/*")
+multiline_df.show()    
+
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="1bcbb8d1-f871-451a-ad16-762dfa91c0a3"/>
 -- MAGIC 
 -- MAGIC 
@@ -179,7 +198,7 @@ DESCRIBE DETAIL students
 
 -- COMMAND ----------
 
-DESCRIBE DETAIL students
+DESCRIBE HISTORY students
 
 -- COMMAND ----------
 
